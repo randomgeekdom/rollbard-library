@@ -1,0 +1,40 @@
+{
+  "name": "@randomgeekdom/rollbard",
+  "version": "1.0.2",
+  "description": "Libraries and generators for fantasy/scifi worldbuilding",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "test": "jest",
+    "build": "tsc",
+    "prepare": "npm run build",
+    "deploy": "npm run test && npm publish"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/randomgeekdom/rollbard.git"
+  },
+  "keywords": [
+    "name",
+    "generator",
+    "fantasy",
+    "scifi",
+    "worldbuilding"
+  ],
+  "author": "Anthony C. Jones",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/randomgeekdom/rollbard/issues"
+  },
+  "homepage": "https://github.com/randomgeekdom/rollbard#readme",
+  "dependencies": {},
+  "devDependencies": {
+    "@types/jest": "^27.0.1",
+    "jest": "^27.0.6",
+    "ts-jest": "^27.0.5",
+    "typescript": "^4.3.5"
+  }
+}
