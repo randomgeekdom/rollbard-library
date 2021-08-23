@@ -1,1 +1,1 @@
-export * from "./Unicorn";
+export * from "./Generators/NameGenerator";
