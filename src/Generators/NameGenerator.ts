@@ -1,13 +1,13 @@
-import {IGenerator} from "./IGenerator";
 import { uniqueNamesGenerator, colors, animals, names } from 'unique-names-generator';
 import { nameByRace } from "fantasy-name-generator";
 import { Gender } from '../Models/Gender';
 import Randomizer from '../Services/Randomizer';
-import humanNames from 'human-names';
+
+import { UNISEX, MALE, FEMALE, FAMILY } from 'wikidata-person-names';
 
 
+export default class NameGenerator {
 
-export default class NameGenerator implements IGenerator<string>{
     dictionaries = [colors, animals, names];
     FantasyRaces = [
         "angel",
@@ -30,13 +30,10 @@ export default class NameGenerator implements IGenerator<string>{
         "orc"
     ];
 
-    Generate(): string {
-        return this.GenerateGenderedName(Gender.Other);
-    }
 
-    GenerateGenderedName(gender: Gender): string{
+    Generate(gender: Gender, isSurname = false): string{
         const numberOfDictionaries = this.dictionaries.length;
-        const choice = Randomizer.GetRandomInt(numberOfDictionaries+1);
+        const choice = Randomizer.GetRandomInt(numberOfDictionaries+2);
 
         if(choice==numberOfDictionaries){
             const randomRace = this.FantasyRaces[Randomizer.GetRandomInt(this.FantasyRaces.length)];
@@ -50,9 +47,21 @@ export default class NameGenerator implements IGenerator<string>{
             }
             return String(nameByRace(randomRace, options));
         }
-        // else if(choice == numberOfDictionaries+1){
-        //     return gender==Gender.Female ? humanNames.femaleRandom() : humanNames.maleRandom();
-        // }
+        else if(choice == numberOfDictionaries+1){
+            if(isSurname){
+                return Randomizer.GetRandomElement(FAMILY.concat());
+            }
+            else{
+                switch(gender){
+                    case Gender.Male:
+                        return Randomizer.GetRandomElement(MALE.concat());
+                    case Gender.Female:
+                        return Randomizer.GetRandomElement(FEMALE.concat());
+                    default:
+                        return Randomizer.GetRandomElement(UNISEX.concat());
+                }
+            }
+        }
         else{
             return this.GetUniqueName(this.dictionaries[choice]);
         }
@@ -65,14 +74,6 @@ export default class NameGenerator implements IGenerator<string>{
                 length: 1,
                 style: 'capital'
             }).split(" ")[0];                
-    }
-    
-    public GenerateFirstName(gender: Gender): string {
-        return this.GenerateGenderedName(gender);
-    }
-
-    public GenerateLastName(): string {
-        return this.GenerateGenderedName(Gender.Other);
     }
 
 }
