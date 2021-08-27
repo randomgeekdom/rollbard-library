@@ -31,7 +31,7 @@ export default class NameGenerator {
     ];
 
 
-    Generate(gender: Gender, isSurname = false): string{
+    public Generate(gender: Gender, isSurname = false): string{
         const numberOfDictionaries = this.dictionaries.length;
         const choice = Randomizer.GetRandomInt(numberOfDictionaries+2);
 
@@ -67,7 +67,11 @@ export default class NameGenerator {
         }
     }
 
-    GetUniqueName(choice: string[]): string{
+    public GenerateFullName(gender: Gender){
+        return this.Generate(gender) + ' ' + this.Generate(gender, true);
+    }
+
+    private GetUniqueName(choice: string[]): string{
         return uniqueNamesGenerator(
             {
                 dictionaries: [choice], 

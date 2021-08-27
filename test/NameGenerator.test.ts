@@ -29,4 +29,11 @@ describe("test name generator", () => {
         console.log(result);
         expect(result).toBeDefined();
     });
+
+    it("name generator for full name has space", () => {
+        var nameGenerator = new NameGenerator();
+        var result = nameGenerator.GenerateFullName(Gender.Other);
+        console.log(result);
+        expect(result).toContain(' ');
+    });
 });
