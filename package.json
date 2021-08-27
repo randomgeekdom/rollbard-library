@@ -7,6 +7,8 @@
   "files": [
     "dist"
   ],
+  "publishConfig": {
+    "@randomgeekdom:registry": "https://npm.pkg.github.com"},
   "scripts": {
     "test": "jest",
     "build": "tsc",
