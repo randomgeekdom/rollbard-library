@@ -36,4 +36,12 @@ describe("test name generator", () => {
         console.log(result);
         expect(result).toContain(' ');
     });
+
+    it("name generator generates multiple names", () => {
+        var nameGenerator = new NameGenerator();
+        for(let i = 0; i<10; i++){
+            var result = nameGenerator.GenerateFullName(Gender.Other);
+            console.log(result);   
+        }
+    });
 });

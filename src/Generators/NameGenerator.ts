@@ -38,13 +38,10 @@ export default class NameGenerator {
         if(choice==numberOfDictionaries){
             const randomRace = this.FantasyRaces[Randomizer.GetRandomInt(this.FantasyRaces.length)];
             var options: any;
-            if(gender==Gender.Other){
-                options = {};
-            }
-            else{
-                const genderText = gender==Gender.Female ? "female" : "male";
-                options = { gender: genderText };
-            }
+            
+            const genderText = gender==Gender.Female || (gender == Gender.Other && Randomizer.GetRandomBool())  ? "female" : "male";
+            options = { gender: genderText };
+            
             return String(nameByRace(randomRace, options));
         }
         else if(choice == numberOfDictionaries+1){
