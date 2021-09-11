@@ -8,7 +8,7 @@ import { UNISEX, MALE, FEMALE, FAMILY } from 'wikidata-person-names';
 
 export default class NameGenerator {
 
-    dictionaries = [colors, animals, names];
+    dictionaries = [names];
     FantasyRaces = [
         "angel",
         "cavePerson",
@@ -32,10 +32,11 @@ export default class NameGenerator {
 
 
     public Generate(gender: Gender, isSurname = false): string{
-        const numberOfDictionaries = this.dictionaries.length;
-        const choice = Randomizer.GetRandomInt(numberOfDictionaries+2);
 
-        if(choice==numberOfDictionaries){
+        if(Randomizer.GetRandomBool(10)){
+            return this.GetUniqueName(Randomizer.GetRandomElement(this.dictionaries));
+        }
+        else if(Randomizer.GetRandomBool(50)){
             const randomRace = this.FantasyRaces[Randomizer.GetRandomInt(this.FantasyRaces.length)];
             var options: any;
             
@@ -44,7 +45,7 @@ export default class NameGenerator {
             
             return String(nameByRace(randomRace, options));
         }
-        else if(choice == numberOfDictionaries+1){
+        else{
             if(isSurname){
                 return Randomizer.GetRandomElement(FAMILY.concat());
             }
@@ -58,9 +59,6 @@ export default class NameGenerator {
                         return Randomizer.GetRandomElement(UNISEX.concat());
                 }
             }
-        }
-        else{
-            return this.GetUniqueName(this.dictionaries[choice]);
         }
     }
 
