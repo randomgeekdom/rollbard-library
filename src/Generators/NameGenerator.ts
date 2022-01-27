@@ -1,15 +1,11 @@
 import { uniqueNamesGenerator, colors, animals, names } from 'unique-names-generator';
 import { nameByRace } from "fantasy-name-generator";
-import { Gender } from '../Models/Gender';
+import humanNames from 'human-names';
 import Randomizer from '../Services/Randomizer';
-
-import { UNISEX, MALE, FEMALE, FAMILY } from 'wikidata-person-names';
-
+import { Gender } from '../Enumerations/Gender';
 
 export default class NameGenerator {
-
-    dictionaries = [names];
-    FantasyRaces = [
+     FantasyRaces = [
         "angel",
         "cavePerson",
         "darkelf",
@@ -30,43 +26,27 @@ export default class NameGenerator {
         "orc"
     ];
 
+     dictionaries = [colors, animals, names];
 
-    public Generate(gender: Gender, isSurname = false): string{
 
-        if(Randomizer.GetRandomBool(10)){
-            return this.GetUniqueName(Randomizer.GetRandomElement(this.dictionaries));
-        }
-        else if(Randomizer.GetRandomBool(50)){
+     GenerateName(gender: Gender): string {
+        const numberOfDictionaries = this.dictionaries.length;
+        const choice = Randomizer.GetRandomInt(numberOfDictionaries+2);
+
+        if(choice==numberOfDictionaries){
             const randomRace = this.FantasyRaces[Randomizer.GetRandomInt(this.FantasyRaces.length)];
-            var options: any;
-            
-            const genderText = gender==Gender.Female || (gender == Gender.Other && Randomizer.GetRandomBool())  ? "female" : "male";
-            options = { gender: genderText };
-            
-            return String(nameByRace(randomRace, options));
+            const genderText = gender==Gender.Female ? "female" : "male";
+            return String(nameByRace(randomRace, { gender: genderText }));
+        }
+        else if(choice == numberOfDictionaries+1){
+            return gender==Gender.Female ? humanNames.femaleRandom() : humanNames.maleRandom();
         }
         else{
-            if(isSurname){
-                return Randomizer.GetRandomElement(FAMILY.concat());
-            }
-            else{
-                switch(gender){
-                    case Gender.Male:
-                        return Randomizer.GetRandomElement(MALE.concat());
-                    case Gender.Female:
-                        return Randomizer.GetRandomElement(FEMALE.concat());
-                    default:
-                        return Randomizer.GetRandomElement(UNISEX.concat());
-                }
-            }
+            return this.GetUniqueName(this.dictionaries[choice]);
         }
     }
 
-    public GenerateFullName(gender: Gender){
-        return this.Generate(gender) + ' ' + this.Generate(gender, true);
-    }
-
-    private GetUniqueName(choice: string[]): string{
+     GetUniqueName(choice: string[]): string{
         return uniqueNamesGenerator(
             {
                 dictionaries: [choice], 
@@ -74,5 +54,12 @@ export default class NameGenerator {
                 style: 'capital'
             }).split(" ")[0];                
     }
+    
+    public  GenerateFirstName(gender: Gender): string {
+        return this.GenerateName(gender);
+    }
 
+    public  GenerateLastName(): string {
+        return this.GenerateName(Randomizer.GetRandomBool() ? Gender.Female : Gender.Male);
+    }
 }
