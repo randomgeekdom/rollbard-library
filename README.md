@@ -1,4 +1,4 @@
-# rollbard
-Generators and libraries for worldbuilding
+# Rollbard
+Generators and libraries for worldbuilding.
 
 Name Generator
