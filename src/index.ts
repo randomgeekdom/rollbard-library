@@ -4,10 +4,11 @@ import NameGenerator from "./Generators/NameGenerator";
 import NPCGenerator from "./Generators/NPCGenerator";
 import TrapGenerator from "./Generators/TrapGenerator";
 import Randomizer from "./Services/Randomizer";
-import Item from "./Models/Item"
-import NPC from "./Models/NPC"
-import Enemy from "./Models/Enemy"
-import KeyValue from "./Models/KeyValue"
+import Item from "./Models/Item";
+import NPC from "./Models/NPC";
+import Enemy from "./Models/Enemy";
+import KeyValue from "./Models/KeyValue";
+import { Gender } from "./Enumerations/Gender";
 
 export { GenderGenerator };
 export { CityNameGenerator };
@@ -19,3 +20,4 @@ export { Item };
 export { NPC };
 export { Enemy };
 export { KeyValue };
+export { Gender };
