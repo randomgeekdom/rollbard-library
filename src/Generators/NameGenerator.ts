@@ -1,8 +1,8 @@
 import { uniqueNamesGenerator, colors, animals, names } from 'unique-names-generator';
 import { nameByRace } from "fantasy-name-generator";
-import humanNames from 'human-names';
 import Randomizer from '../Services/Randomizer';
 import { Gender } from '../Enumerations/Gender';
+import { UNISEX, MALE, FEMALE, FAMILY } from 'wikidata-person-names';
 
 export default class NameGenerator {
 constructor(private randomizer: Randomizer){}
@@ -41,7 +41,7 @@ constructor(private randomizer: Randomizer){}
             return String(nameByRace(randomRace, { gender: genderText }));
         }
         else if(choice == numberOfDictionaries+1){
-            return gender==Gender.Female ? humanNames.femaleRandom() : humanNames.maleRandom();
+            return gender==Gender.Female ? this.randomizer.GetRandomElement(FEMALE.concat()) : this.randomizer.GetRandomElement(MALE.concat());
         }
         else{
             return this.GetUniqueName(this.dictionaries[choice]);
