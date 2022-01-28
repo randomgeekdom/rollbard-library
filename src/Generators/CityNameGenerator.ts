@@ -1,8 +1,13 @@
+import { Gender } from '../Enumerations/Gender';
 import Randomizer from '../Services/Randomizer';
 import GenderGenerator from './GenderGenerator';
 import NameGenerator from './NameGenerator';
 
 export default class CityNameGenerator {
+constructor(private randomizer: Randomizer,
+    private nameGenerator: NameGenerator,
+    private genderGenerator: GenderGenerator){}
+
     prefixes = [
         "Saint ",
         "San ",
@@ -22,17 +27,14 @@ export default class CityNameGenerator {
         "wall",
         "grad"];
     Generate(): string {
-        debugger;
-        var nameGen = new NameGenerator();
-        var genderGen = new GenderGenerator();
-        const name = nameGen.GenerateName(genderGen.GetGender());
+        const name = this.nameGenerator.GenerateName(this.genderGenerator.GetGender());
 
-        switch (Randomizer.GetRandomInt(3)) {
+        switch (this.randomizer.GetRandomInt(3)) {
             case 0: //suffix
-                return name + Randomizer.GetRandomElement(this.suffixes);
+                return name + this.randomizer.GetRandomElement(this.suffixes);
 
             case 1: //prefix
-                return Randomizer.GetRandomElement(this.prefixes) + name;
+                return this.randomizer.GetRandomElement(this.prefixes) + name;
 
             default:
                 return name;

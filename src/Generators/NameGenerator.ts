@@ -5,6 +5,8 @@ import Randomizer from '../Services/Randomizer';
 import { Gender } from '../Enumerations/Gender';
 
 export default class NameGenerator {
+constructor(private randomizer: Randomizer){}
+
      FantasyRaces = [
         "angel",
         "cavePerson",
@@ -31,10 +33,10 @@ export default class NameGenerator {
 
      GenerateName(gender: Gender): string {
         const numberOfDictionaries = this.dictionaries.length;
-        const choice = Randomizer.GetRandomInt(numberOfDictionaries+2);
+        const choice = this.randomizer.GetRandomInt(numberOfDictionaries+2);
 
         if(choice==numberOfDictionaries){
-            const randomRace = this.FantasyRaces[Randomizer.GetRandomInt(this.FantasyRaces.length)];
+            const randomRace = this.FantasyRaces[this.randomizer.GetRandomInt(this.FantasyRaces.length)];
             const genderText = gender==Gender.Female ? "female" : "male";
             return String(nameByRace(randomRace, { gender: genderText }));
         }
@@ -60,6 +62,6 @@ export default class NameGenerator {
     }
 
     public  GenerateLastName(): string {
-        return this.GenerateName(Randomizer.GetRandomBool() ? Gender.Female : Gender.Male);
+        return this.GenerateName(this.randomizer.GetRandomBool() ? Gender.Female : Gender.Male);
     }
 }
