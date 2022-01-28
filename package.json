@@ -1,6 +1,6 @@
 {
   "name": "@randomgeekdom/rollbard",
-  "version": "1.0.6",
+  "version": "1.0.8",
   "description": "Libraries and generators for fantasy/scifi worldbuilding",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -11,7 +11,7 @@
     "test": "jest",
     "build": "tsc",
     "prepare": "npm run build",
-    "deploy": "npm run test && npm publish"
+    "deploy": "npm run test && npm run build && npm publish"
   },
   "repository": {
     "type": "git",
