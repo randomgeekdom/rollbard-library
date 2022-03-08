@@ -9,6 +9,7 @@ import NPC from "./Models/NPC";
 import Enemy from "./Models/Enemy";
 import KeyValue from "./Models/KeyValue";
 import { Gender } from "./Enumerations/Gender";
+import RulerTitleGenerator from "./Generators/RulerTitleGenerator";
 
 export { GenderGenerator };
 export { CityNameGenerator };
@@ -21,3 +22,4 @@ export { NPC };
 export { Enemy };
 export { KeyValue };
 export { Gender };
+export { RulerTitleGenerator };
