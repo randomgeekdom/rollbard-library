@@ -10,9 +10,6 @@ import RulerTitleGenerator from "./RulerTitleGenerator";
 export default class NPCGenerator{
     constructor(private randomizer:Randomizer){}
     Generate(): NPC{
-
-        var isRuler = this.randomizer.GetRandomBool();
-
         const npc = new NPC();
         var genderGenerator = new GenderGenerator(this.randomizer);
         var nameGenerator = new NameGenerator(this.randomizer);
