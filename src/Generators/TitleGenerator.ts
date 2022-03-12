@@ -40,6 +40,10 @@ export default class RulerTitleGenerator {
       femaleName: "Czarina",
     },
     {
+      maleName: "Doctor",
+      femaleName: "Doctor",
+    },
+    {
       maleName: "Dominus",
       femaleName: "Domina",
     },
@@ -92,6 +96,10 @@ export default class RulerTitleGenerator {
       femaleName: "Queen",
     },
     {
+      maleName: "Lord",
+      femaleName: "Lady",
+    },
+    {
       maleName: "Maharaja",
       femaleName: "Maharani",
     },
@@ -120,8 +128,16 @@ export default class RulerTitleGenerator {
       femaleName: "Prime Minister",
     },
     {
+      maleName: "Professor",
+      femaleName: "Professor",
+    },
+    {
       maleName: "Shah",
       femaleName: "Shahbanu",
+    },
+    {
+      maleName: "Sir",
+      femaleName: "Madam",
     },
     {
       maleName: "Sultan",

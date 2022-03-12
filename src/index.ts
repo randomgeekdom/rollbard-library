@@ -10,6 +10,7 @@ import Enemy from "./Models/Enemy";
 import KeyValue from "./Models/KeyValue";
 import { Gender } from "./Enumerations/Gender";
 import TitleGenerator from "./Generators/TitleGenerator";
+import JobGenerator from "./Generators/JobGenerator";
 
 export { GenderGenerator };
 export { CityNameGenerator };
@@ -23,3 +24,4 @@ export { Enemy };
 export { KeyValue };
 export { Gender };
 export { TitleGenerator };
+export { JobGenerator };
