@@ -91,7 +91,7 @@ export default class JobGenerator extends FromListGenerator<string> {
     "Writer"
   ];
 
-  constructor(private randomizer: Randomizer) {
+  constructor(randomizer: Randomizer) {
       super(randomizer);
   }
 }
