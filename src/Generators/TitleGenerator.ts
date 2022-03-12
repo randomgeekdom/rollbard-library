@@ -4,7 +4,7 @@ import Randomizer from "../Services/Randomizer";
 export default class RulerTitleGenerator {
   constructor(private randomizer: Randomizer) {}
 
-  public GetRandomRulerTitle(gender: Gender) {
+  public GetRandomTitle(gender: Gender) {
     var element = this.randomizer.GetRandomElement(this.list);
 
     if (gender == Gender.Male) {
@@ -98,6 +98,10 @@ export default class RulerTitleGenerator {
     {
       maleName: "Marquis",
       femaleName: "Marquess",
+    },
+    {
+      maleName: "Mr.",
+      femaleName: "Ms.",
     },
     {
       maleName: "Patriarch",

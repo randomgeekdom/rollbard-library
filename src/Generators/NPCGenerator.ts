@@ -4,7 +4,7 @@ import NPC from "../Models/NPC";
 import CityNameGenerator from "./CityNameGenerator";
 import GenderGenerator from "./GenderGenerator";
 import NameGenerator from "./NameGenerator";
-import RulerTitleGenerator from "./RulerTitleGenerator";
+import RulerTitleGenerator from "./TitleGenerator";
 
 
 export default class NPCGenerator{
@@ -18,12 +18,10 @@ export default class NPCGenerator{
 
         npc.Gender = genderGenerator.GetGender();
 
-        var genericTitle = npc.Gender == Gender.Male ? "Sir" : "Madam";
-
         npc.FirstName = nameGenerator.GenerateFirstName(npc.Gender);
         npc.LastName = nameGenerator.GenerateLastName();
         npc.Hometown = cityNameGenerator.Generate();
-        npc.Title = this.randomizer.GetRandomBool() ? genericTitle : rulerTitleGenerator.GetRandomRulerTitle(npc.Gender);
+        npc.Title = rulerTitleGenerator.GetRandomTitle(npc.Gender);
 
         return npc;
     }
