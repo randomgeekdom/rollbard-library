@@ -8,9 +8,11 @@ import Item from "./Models/Item";
 import NPC from "./Models/NPC";
 import Enemy from "./Models/Enemy";
 import KeyValue from "./Models/KeyValue";
+import Vessel from "./Models/Vessel";
 import { Gender } from "./Enumerations/Gender";
 import TitleGenerator from "./Generators/TitleGenerator";
 import JobGenerator from "./Generators/JobGenerator";
+import VesselGenerator from "./Generators/VesselGenerator";
 
 export { GenderGenerator };
 export { CityNameGenerator };
@@ -25,3 +27,5 @@ export { KeyValue };
 export { Gender };
 export { TitleGenerator };
 export { JobGenerator };
+export { VesselGenerator };
+export { Vessel };
