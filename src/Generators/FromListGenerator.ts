@@ -1,7 +1,7 @@
 import Randomizer from "../Services/Randomizer";
 
 export default abstract class FromListGenerator<T>{
-    constructor(private randomizer: Randomizer){}
+    constructor(private randomizer: Randomizer = Randomizer.Get()){}
 
 
     protected abstract List: T[];

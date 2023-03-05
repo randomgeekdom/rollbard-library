@@ -4,9 +4,10 @@ import GenderGenerator from './GenderGenerator';
 import NameGenerator from './NameGenerator';
 
 export default class CityNameGenerator {
-constructor(private randomizer: Randomizer,
-    private nameGenerator: NameGenerator,
-    private genderGenerator: GenderGenerator){}
+
+constructor(private randomizer: Randomizer = Randomizer.Get(),
+    private nameGenerator: NameGenerator = NameGenerator.Get(),
+    private genderGenerator: GenderGenerator = GenderGenerator.Get()){}
 
     prefixes = [
         "Saint ",
@@ -39,5 +40,9 @@ constructor(private randomizer: Randomizer,
             default:
                 return name;
         }
+    }
+
+    static Get(){
+        return new CityNameGenerator(Randomizer.Get());
     }
 }

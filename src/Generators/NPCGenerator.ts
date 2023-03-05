@@ -9,22 +9,24 @@ import RulerTitleGenerator from "./TitleGenerator";
 
 
 export default class NPCGenerator{
-    constructor(private randomizer:Randomizer){}
+    constructor(
+        private randomizer:Randomizer = Randomizer.Get(),
+        private genderGenerator: GenderGenerator = GenderGenerator.Get(),
+        private nameGenerator: NameGenerator = NameGenerator.Get(),
+        private cityNameGenerator: CityNameGenerator = CityNameGenerator.Get(),
+        private rulerTitleGenerator: RulerTitleGenerator = new RulerTitleGenerator(Randomizer.Get()),
+        private jobGenerator: JobGenerator = new JobGenerator(Randomizer.Get())
+        ){}
+
     Generate(): NPC{
         const npc = new NPC();
-        var genderGenerator = new GenderGenerator(this.randomizer);
-        var nameGenerator = new NameGenerator(this.randomizer);
-        var cityNameGenerator = new CityNameGenerator(this.randomizer, nameGenerator, genderGenerator);
-        var rulerTitleGenerator = new RulerTitleGenerator(this.randomizer);
-        var jobGenerator = new JobGenerator(this.randomizer);
+        npc.Gender = this.genderGenerator.GetGender();
 
-        npc.Gender = genderGenerator.GetGender();
-
-        npc.FirstName = nameGenerator.GenerateFirstName(npc.Gender);
-        npc.LastName = nameGenerator.GenerateLastName();
-        npc.Hometown = cityNameGenerator.Generate();
-        npc.Title = rulerTitleGenerator.GetRandomTitle(npc.Gender);
-        npc.Job = jobGenerator.Generate();
+        npc.FirstName = this.nameGenerator.GenerateFirstName(npc.Gender);
+        npc.LastName = this.nameGenerator.GenerateLastName();
+        npc.Hometown = this.cityNameGenerator.Generate();
+        npc.Title = this.rulerTitleGenerator.GetRandomTitle(npc.Gender);
+        npc.Job = this.jobGenerator.Generate();
 
         return npc;
     }

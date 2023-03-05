@@ -8,4 +8,8 @@ export default class Randomizer{
     GetRandomElement<T>(array: T[]){
         return array[this.GetRandomInt(array.length)];
     }
+
+    static Get(): Randomizer{
+        return new Randomizer();
+    }
 }

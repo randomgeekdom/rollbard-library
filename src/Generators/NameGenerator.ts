@@ -5,7 +5,7 @@ import { Gender } from '../Enumerations/Gender';
 import { UNISEX, MALE, FEMALE, FAMILY } from 'wikidata-person-names';
 
 export default class NameGenerator {
-constructor(private randomizer: Randomizer){}
+constructor(private randomizer: Randomizer = Randomizer.Get()){}
 
      FantasyRaces = [
         "angel",
@@ -63,5 +63,9 @@ constructor(private randomizer: Randomizer){}
 
     public  GenerateLastName(): string {
         return this.GenerateName(this.randomizer.GetRandomBool() ? Gender.Female : Gender.Male);
+    }
+
+    static Get(){
+        return new NameGenerator(Randomizer.Get());
     }
 }
