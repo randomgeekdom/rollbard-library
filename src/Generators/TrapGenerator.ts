@@ -28,7 +28,7 @@ constructor(private randomizer: Randomizer){}
     ];
 
      Generate(): string {
-         var randomizer = new Randomizer();
+        var randomizer = new Randomizer();
         const target = this.randomizer.GetRandomElement(this.targets);
         const trap = this.randomizer.GetRandomElement(this.traps);
         const damageDie = this.randomizer.GetRandomElement(this.damageDice);

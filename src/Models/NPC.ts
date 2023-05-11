@@ -1,4 +1,5 @@
 import { Gender } from "../Enumerations/Gender";
+import Vessel from "./Vessel";
 
 export default class NPC {
   public FirstName = "";
@@ -7,6 +8,7 @@ export default class NPC {
   public Hometown = "";
   public Title = "";
   public Job = "";
+  public Vessel?:Vessel;
 
   public get Name() {
     return this.FirstName + " " + this.LastName;

@@ -6,6 +6,7 @@ import GenderGenerator from "./GenderGenerator";
 import JobGenerator from "./JobGenerator";
 import NameGenerator from "./NameGenerator";
 import RulerTitleGenerator from "./TitleGenerator";
+import VesselGenerator from "./VesselGenerator";
 
 
 export default class NPCGenerator {
@@ -15,7 +16,8 @@ export default class NPCGenerator {
         private nameGenerator: NameGenerator = NameGenerator.Get(),
         private cityNameGenerator: CityNameGenerator = CityNameGenerator.Get(),
         private rulerTitleGenerator: RulerTitleGenerator = new RulerTitleGenerator(Randomizer.Get()),
-        private jobGenerator: JobGenerator = new JobGenerator(Randomizer.Get())
+        private jobGenerator: JobGenerator = new JobGenerator(Randomizer.Get()),
+        private vesselGenerator: VesselGenerator = new VesselGenerator(Randomizer.Get())
     ) { }
 
     Generate(): NPC {
@@ -27,11 +29,14 @@ export default class NPCGenerator {
         npc.Hometown = this.cityNameGenerator.Generate();
 
         if (this.randomizer.GetRandomBool(5)) {
-            npc.Job = npc.Title = this.rulerTitleGenerator.GetRandomTitle(npc.Gender);
+            npc.Title = this.rulerTitleGenerator.GetRandomTitle(npc.Gender);
+            npc.Job = "Leader";
         }
         else {
             npc.Job = this.jobGenerator.Generate();
         }
+
+        npc.Vessel = this.vesselGenerator.Generate();
 
         return npc;
     }
