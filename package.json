@@ -1,6 +1,6 @@
 {
   "name": "@randomgeekdom/rollbard",
-  "version": "1.2.12",
+  "version": "1.2.13",
   "description": "Libraries and generators for fantasy/scifi worldbuilding",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
