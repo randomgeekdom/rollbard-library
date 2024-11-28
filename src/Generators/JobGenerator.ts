@@ -1,7 +1,7 @@
 import Randomizer from "../Services/Randomizer";
-import FromListGenerator from "./FromListGenerator";
+import FromListRoller from "../Rollers/FromListRoller";
 
-export default class JobGenerator extends FromListGenerator<string> {
+export default class JobGenerator extends FromListRoller<string> {
   protected List = [
     "Accountant",
     "Actor",
