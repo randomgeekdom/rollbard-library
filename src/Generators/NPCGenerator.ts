@@ -1,19 +1,18 @@
 import { Randomizer } from "..";
-import { Gender } from "../Enumerations/Gender";
 import NPC from "../Models/NPC";
 import CityNameGenerator from "./CityNameGenerator";
 import GenderGenerator from "./GenderGenerator";
 import JobGenerator from "./JobGenerator";
-import NameGenerator from "./NameGenerator";
 import RulerTitleGenerator from "./TitleGenerator";
 import VesselGenerator from "./VesselGenerator";
+import NameRoller from "../Rollers/NameRoller";
 
 
 export default class NPCGenerator {
     constructor(
         private randomizer: Randomizer = Randomizer.Get(),
         private genderGenerator: GenderGenerator = GenderGenerator.Get(),
-        private nameGenerator: NameGenerator = NameGenerator.Get(),
+        private nameRoller: NameRoller = NameRoller.Get(),
         private cityNameGenerator: CityNameGenerator = CityNameGenerator.Get(),
         private rulerTitleGenerator: RulerTitleGenerator = new RulerTitleGenerator(Randomizer.Get()),
         private jobGenerator: JobGenerator = new JobGenerator(Randomizer.Get()),
@@ -24,8 +23,8 @@ export default class NPCGenerator {
         const npc = new NPC();
         npc.Gender = this.genderGenerator.GetGender();
 
-        npc.FirstName = this.nameGenerator.GenerateFirstName(npc.Gender);
-        npc.LastName = this.nameGenerator.GenerateLastName();
+        npc.FirstName = this.nameRoller.GenerateFirstName(npc.Gender);
+        npc.LastName = this.nameRoller.GenerateLastName();
         npc.Hometown = this.cityNameGenerator.Generate();
 
         if (this.randomizer.GetRandomBool(5)) {
