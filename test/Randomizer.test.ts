@@ -31,7 +31,7 @@ describe("Randomizer", () => {
 
 
     it("NameRoller generates names", () => {
-        var roller = new NameRoller(new Randomizer());
+        const roller = new NameRoller(new Randomizer());
 
         for(let i=0; i < 10; i++){
             let result = roller.GenerateFirstName(Gender.Female);
