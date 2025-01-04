@@ -14,6 +14,7 @@ import TitleGenerator from "./Generators/TitleGenerator";
 import JobGenerator from "./Generators/JobGenerator";
 import VesselGenerator from "./Generators/VesselGenerator";
 import NameRoller from "./Rollers/NameRoller";
+import HeroRoller from "./Rollers/HeroRoller";
 
 export {GenderGenerator};
 export {CityNameGenerator};
@@ -31,3 +32,4 @@ export {JobGenerator};
 export {VesselGenerator};
 export {Vessel};
 export {NameRoller};
+export {HeroRoller};
