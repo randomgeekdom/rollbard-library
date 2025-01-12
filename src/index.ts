@@ -16,6 +16,7 @@ import VesselGenerator from "./Generators/VesselGenerator";
 import NameRoller from "./Rollers/NameRoller";
 import HeroRoller from "./Rollers/HeroRoller";
 import MonsterRoller from "./Rollers/MonsterRoller";
+import SettingRoller from "./Rollers/SettingRoller";
 
 export {GenderGenerator};
 export {CityNameGenerator};
@@ -35,3 +36,4 @@ export {Vessel};
 export {NameRoller};
 export {HeroRoller};
 export {MonsterRoller};
+export {SettingRoller};
