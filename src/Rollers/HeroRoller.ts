@@ -5,7 +5,8 @@ export default class HeroRoller extends FromListRoller<string> {
         "Abandoned Child",
         "Adventurer",
         "Alchemist",
-        "Good Witch"
+        "Good Witch",
+        "Police Officer"
     ];
 
 }
