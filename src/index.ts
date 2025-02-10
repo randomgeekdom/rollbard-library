@@ -17,6 +17,7 @@ import NameRoller from "./Rollers/NameRoller";
 import HeroRoller from "./Rollers/HeroRoller";
 import MonsterRoller from "./Rollers/MonsterRoller";
 import SettingRoller from "./Rollers/SettingRoller";
+import TerrainRoller from "./Rollers/TerrainRoller";
 
 export {GenderGenerator};
 export {CityNameGenerator};
@@ -37,3 +38,4 @@ export {NameRoller};
 export {HeroRoller};
 export {MonsterRoller};
 export {SettingRoller};
+export {TerrainRoller};
