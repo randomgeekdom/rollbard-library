@@ -6,6 +6,7 @@ export default class MonsterRoller extends FromListRoller<string> {
         "Giant",
         "Golem",
         "Robot",
+        "Zombie"
     ];
 
 }
